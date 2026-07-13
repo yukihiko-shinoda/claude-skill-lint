@@ -234,3 +234,11 @@ zip-safe = false
 
 [tool.setuptools.package-data]
 "*" = ["py.typed"]
+
+[tool.uv]
+# setuptools>=77 only soft-checks for packaging.licenses (try/except, no declared install-time
+# dependency) when validating the SPDX `license = "MIT"` expression above. Without this floor, an
+# unrelated dependency can transiently drag `packaging` below 24.2 on a given resolution (uv.lock is
+# intentionally not committed; see .gitignore), raising "Cannot import `packaging.licenses`" at
+# invoke/tasks.py import time via package-discovery's Setuptools().
+constraint-dependencies = ["packaging>=24.2"]
