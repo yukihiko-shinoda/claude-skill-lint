@@ -59,7 +59,7 @@ classifiers = [
     "Typing :: Typed",
 ]
 dependencies = [
-    "click>=7.0",
+    "click>=8.4.2",
     "pytest>=7.0",
 ]
 
