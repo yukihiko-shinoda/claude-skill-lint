@@ -12,7 +12,7 @@ dev = [
 
 [project]
 name = "csklint"
-version = "0.1.0"
+version = "0.1.1"
 description = "The linter for Claude Code skill."
 readme = "README.md"
 requires-python = ">=3.9"
@@ -76,7 +76,7 @@ csklint = "csklint.cli:csklint"
 skips = ["tests/*", "csklint/_tests/*"]
 
 [tool.bumpversion]
-current_version = "0.1.0"
+current_version = "0.1.1"
 commit = true
 tag = true
 
