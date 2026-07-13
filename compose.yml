@@ -1,0 +1,8 @@
+services:
+  claude-skill-lint:
+    build: .
+    image: futureys/claude-skill-lint:development
+    volumes:
+      - .:/workspace:cached
+      - /workspace/.venv
+      - ./output:/output
