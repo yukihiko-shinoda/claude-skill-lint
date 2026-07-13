@@ -24,10 +24,10 @@ def csklint() -> None:
     default=str(DEFAULT_SKILLS_DIR),
     type=click.Path(),
 )
-def run(skills_dir: str) -> int:
+def run(skills_dir: str) -> None:
     """Run the bundled skills-validation tests against SKILLS_DIR (defaults to ~/.claude/skills)."""
     with resources.as_file(resources.files("csklint") / "_tests") as tests_dir:
-        return int(pytest.main([str(tests_dir), f"--skills-dir={skills_dir}"]))
+        sys.exit(int(pytest.main([str(tests_dir), f"--skills-dir={skills_dir}"])))
 
 
 @csklint.command()

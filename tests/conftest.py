@@ -36,6 +36,12 @@ def fixture_skills_dir() -> Path:
     return Path(__file__).parent / "fixtures" / "skills"
 
 
+@pytest.fixture
+def invalid_fixture_skills_dir() -> Path:
+    """Return the checked-in skills directory whose only skill intentionally fails the bundled suite."""
+    return Path(__file__).parent / "fixtures" / "invalid-skills"
+
+
 class FakeResponse:
     """Minimal context-manager stand-in for the object returned by ``urllib.request.urlopen``."""
 
