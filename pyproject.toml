@@ -8,6 +8,7 @@ dev = [
     "invokelint[basic]>=0.19.0",
     "pytest-mock>=3.15.1",
     "pyvelocity; python_version >= '3.9'",
+    "types-pyyaml",
 ]
 
 [project]
@@ -60,7 +61,9 @@ classifiers = [
 ]
 dependencies = [
     "click>=7.0",
+    "pydantic>=2.0",
     "pytest>=7.0",
+    "pyyaml>=6.0",
 ]
 
 [project.urls]
@@ -137,6 +140,7 @@ exclude = [
 ]
 
 [tool.mypy]
+plugins = ["pydantic.mypy"]
 strict = true
 
 [tool.pylint]
@@ -225,6 +229,12 @@ max-complexity = 5
 [tool.ruff.lint.per-file-ignores]
 "tests/*" = ["S101"]
 "csklint/_tests/*" = ["S101"]
+
+[tool.ruff.lint.pyupgrade]
+# Pydantic evaluates model field annotations at runtime, and PEP 604 unions (`X | None`) raise TypeError on
+# Python 3.9 (the minimum supported version) even under `from __future__ import annotations`. Keep
+# `Optional`/`Union` spellings instead of letting UP006/UP007/UP045 rewrite them.
+keep-runtime-typing = true
 
 [tool.ruff.lint.pydocstyle]
 convention = "google"

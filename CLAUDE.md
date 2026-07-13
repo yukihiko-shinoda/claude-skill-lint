@@ -5,8 +5,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Overview
 
 `csklint` (CLI name `csklint`) is a linter for Claude Code skills. Rather than reimplementing skill
-validation, it bundles a pytest suite that shells out to two external tools — `skill-validator` (a Go binary) and
-`markdownlint-cli2` (an npm package) — and provides a `csklint install` subcommand to fetch and install them.
+validation, it bundles a pytest suite combining two external tools — `skill-validator` (a Go binary) and
+`markdownlint-cli2` (an npm package) — with a pure-Python frontmatter schema check built on Pydantic, and provides
+a `csklint install` subcommand to fetch and install the external tools.
 
 ## Commands
 
@@ -63,6 +64,19 @@ This repo has two `pytest` suites that look similar but serve different purposes
   `csklint run` against [tests/fixtures/skills/](tests/fixtures/skills/) using the real installed binaries — no
   mocks. `tests/_tests/` mirrors `csklint/_tests/` the same way `tests/` mirrors `csklint/`
   (e.g. `tests/_tests/test_tool_requirement.py` tests `csklint/_tests/tool_requirement.py`).
+
+### Frontmatter schema check ([csklint/frontmatter.py](csklint/frontmatter.py))
+
+Unlike the two shelled-out checks, [csklint/_tests/test_frontmatter_lint.py](csklint/_tests/test_frontmatter_lint.py)
+runs in-process: it validates each `SKILL.md`'s YAML frontmatter against `SkillFrontmatter`, a Pydantic model of the
+documented frontmatter reference (field types, fixed enums like `effort`/`shell`, string-or-list shapes).
+`extra="allow"` mirrors skill-validator's `--allow-extra-frontmatter`. Files without a frontmatter block are skipped
+(presence is skill-validator's job); frontmatter that is invalid YAML, unclosed, or not a mapping is a failure.
+Cross-referencing checks (is `model` a live alias? does `agent` exist on disk?) are intentionally out of scope. The
+model's field annotations use `Optional`/`Union` (not PEP 604) because Pydantic evaluates them at runtime on
+Python 3.9; Ruff's `keep-runtime-typing = true` preserves that. Reusable logic lives in
+[csklint/frontmatter.py](csklint/frontmatter.py) (mirrored by `tests/test_frontmatter.py`); the shipped test file is
+a thin wrapper like the other two checks.
 
 ### External tool installation ([csklint/installation.py](csklint/installation.py))
 

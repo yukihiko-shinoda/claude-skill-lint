@@ -14,6 +14,7 @@ import pytest
 from csklint.installation import SkillValidatorInstaller
 
 if TYPE_CHECKING:
+    from collections.abc import Callable
     from typing import Self
 
     from pytest_mock import MockerFixture
@@ -40,6 +41,20 @@ def fixture_skills_dir() -> Path:
 def invalid_fixture_skills_dir() -> Path:
     """Return the checked-in skills directory whose only skill intentionally fails the bundled suite."""
     return Path(__file__).parent / "fixtures" / "invalid-skills"
+
+
+@pytest.fixture
+def write_skill_md(tmp_path: Path) -> Callable[[str, str], Path]:
+    """Return a factory writing ``<tmp_path>/<name>/SKILL.md`` with the given text and returning the file path."""
+
+    def _write(name: str, text: str) -> Path:
+        skill_dir = tmp_path / name
+        skill_dir.mkdir()
+        skill_md = skill_dir / "SKILL.md"
+        skill_md.write_text(text, encoding="utf-8")
+        return skill_md
+
+    return _write
 
 
 class FakeResponse:
