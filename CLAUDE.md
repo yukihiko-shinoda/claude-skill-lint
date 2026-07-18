@@ -98,5 +98,8 @@ Workflows in [.github/workflows/](.github/workflows/) all delegate to reusable w
 `yukihiko-shinoda/reusable-workflow-invoke-lint-*` repos (test, lint, qlty, deploy) pinned by commit SHA, plus a
 standard CodeQL workflow. The test workflow's `post-sync-command-linux` runs
 `sudo env "PATH=$PATH" uv run --no-sync csklint install` before tests execute — this is what puts `skill-validator`
-and `markdownlint-cli2` on PATH in CI so the `@pytest.mark.slow` end-to-end test can run; the devcontainer image
-installs the same tools at build time (see [Dockerfile](Dockerfile)) for local development.
+and `markdownlint-cli2` on PATH in CI so the `@pytest.mark.slow` end-to-end test can run. For local development, run
+`uv run csklint install` manually (see [docs/CONTRIBUTING.md](docs/CONTRIBUTING.md)) — this project no longer ships
+its own Dockerfile/devcontainer; use the parent
+[docker-compose-python-development](https://github.com/yukihiko-shinoda/docker-compose-python-development) repo
+instead.

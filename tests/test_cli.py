@@ -22,9 +22,9 @@ class TestRun:
     ) -> None:
         """Assert ``csklint run`` exits 0 for the fixture skills directory using the real tools.
 
-        Requires skill-validator and markdownlint-cli2 on PATH (installed by ``csklint install``): the devcontainer
-        image installs them at build time, and CI installs them via the reusable test workflow's post-sync-command-
-        linux hook before the test step runs.
+        Requires skill-validator and markdownlint-cli2 on PATH, installed by running ``csklint install`` manually for
+        local development; CI installs them via the reusable test workflow's post-sync-command-linux hook before the
+        test step runs.
         """
         # Reason: The executable path is resolved via shutil.which in the csklint_command fixture and the
         # arguments are a hardcoded literal plus a repository-controlled path; shell=False prevents injection.
