@@ -49,5 +49,7 @@ class TestMarkdownlintConfigResolver:
 
     def test_resolve_at_filesystem_root_does_not_error(self, tmp_path: Path) -> None:
         """Guard the skills_dir == skills_dir.parent case (e.g. filesystem root) against double-checking."""
-        root = tmp_path.parents[-1]
+        # Path.parents[-1] needs Python 3.10+ for negative indexing
+        # Python 3.9's pathlib only supports non-negative indices there
+        root = list(tmp_path.parents)[-1]
         assert MarkdownlintConfigResolver(root).resolve() is None
