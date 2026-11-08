@@ -9,6 +9,10 @@ currently-valid model alias, whether ``agent`` names an existing subagent defini
 
 from __future__ import annotations
 
+__author__ = "Yukihiko Shinoda"
+__copyright__ = "Copyright (c) 2026 Yukihiko Shinoda"
+__license__ = "MIT"
+
 from typing import TYPE_CHECKING
 from typing import Any
 from typing import Literal
