@@ -1,5 +1,9 @@
 """Console scripts for csklint."""
 
+__author__ = "Yukihiko Shinoda"
+__copyright__ = "Copyright (c) 2026 Yukihiko Shinoda"
+__license__ = "MIT"
+
 import sys
 from importlib import resources
 from pathlib import Path

@@ -2,10 +2,14 @@
 
 from __future__ import annotations
 
+__author__ = "Yukihiko Shinoda"
+__copyright__ = "Copyright (c) 2026 Yukihiko Shinoda"
+__license__ = "MIT"
+
 import hashlib
 import platform
 import shutil
-import subprocess  # nosec B404 - subprocess is used intentionally to invoke npm tooling
+import subprocess  # nosec B404 # subprocess is used intentionally to invoke npm tooling
 import tarfile
 import tempfile
 import urllib.request

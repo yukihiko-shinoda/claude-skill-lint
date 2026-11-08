@@ -2,6 +2,10 @@
 
 from __future__ import annotations
 
+__author__ = "Yukihiko Shinoda"
+__copyright__ = "Copyright (c) 2026 Yukihiko Shinoda"
+__license__ = "MIT"
+
 import pytest
 
 from csklint._tests.tool_requirement import assert_tool_on_path

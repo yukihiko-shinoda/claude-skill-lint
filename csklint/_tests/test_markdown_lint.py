@@ -2,7 +2,11 @@
 
 from __future__ import annotations
 
-import subprocess  # nosec B404 - subprocess is used intentionally to invoke the markdownlint-cli2 binary
+__author__ = "Yukihiko Shinoda"
+__copyright__ = "Copyright (c) 2026 Yukihiko Shinoda"
+__license__ = "MIT"
+
+import subprocess  # nosec B404 # subprocess is used intentionally to invoke the markdownlint-cli2 binary
 from typing import TYPE_CHECKING
 
 import pytest

@@ -95,8 +95,8 @@ automatically — no other file needs updating.
 ### CI
 
 Workflows in [.github/workflows/](.github/workflows/) all delegate to reusable workflows in the
-`yukihiko-shinoda/reusable-workflow-invoke-lint-*` repos (test, lint, qlty, deploy) pinned by commit SHA, plus a
-standard CodeQL workflow. The test workflow's `post-sync-command-linux` runs
+`yukihiko-shinoda/reusable-workflow-invoke-lint-*` repos (test, lint, qlty, deploy) pinned by commit SHA. CodeQL
+runs through GitHub code scanning default setup, not a workflow file. The test workflow's `post-sync-command-linux` runs
 `sudo env "PATH=$PATH" uv run --no-sync csklint install` before tests execute — this is what puts `skill-validator`
 and `markdownlint-cli2` on PATH in CI so the `@pytest.mark.slow` end-to-end test can run. For local development, run
 `uv run csklint install` manually (see [docs/CONTRIBUTING.md](docs/CONTRIBUTING.md)) — this project no longer ships

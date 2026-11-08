@@ -2,7 +2,11 @@
 
 from __future__ import annotations
 
-import subprocess  # nosec B404 - subprocess is used intentionally to invoke the skill-validator binary
+__author__ = "Yukihiko Shinoda"
+__copyright__ = "Copyright (c) 2026 Yukihiko Shinoda"
+__license__ = "MIT"
+
+import subprocess  # nosec B404 # subprocess is used intentionally to invoke the skill-validator binary
 from typing import TYPE_CHECKING
 
 from csklint._tests.tool_requirement import assert_tool_on_path
