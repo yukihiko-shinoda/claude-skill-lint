@@ -1,7 +1,7 @@
 # Claude Skill Lint
 
 [![Test](https://github.com/yukihiko-shinoda/claude-skill-lint/workflows/Test/badge.svg)](https://github.com/yukihiko-shinoda/claude-skill-lint/actions?query=workflow%3ATest)
-[![CodeQL](https://github.com/yukihiko-shinoda/claude-skill-lint/workflows/CodeQL/badge.svg)](https://github.com/yukihiko-shinoda/claude-skill-lint/actions?query=workflow%3ACodeQL)
+[![CodeQL](https://github.com/yukihiko-shinoda/claude-skill-lint/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/yukihiko-shinoda/claude-skill-lint/actions/workflows/github-code-scanning/codeql)
 [![Code Coverage](https://qlty.sh/gh/yukihiko-shinoda/projects/claude-skill-lint/coverage.svg)](https://qlty.sh/gh/yukihiko-shinoda/projects/claude-skill-lint)
 [![Maintainability](https://qlty.sh/gh/yukihiko-shinoda/projects/claude-skill-lint/maintainability.svg)](https://qlty.sh/gh/yukihiko-shinoda/projects/claude-skill-lint)
 [![Dependabot](https://flat.badgen.net/github/dependabot/yukihiko-shinoda/claude-skill-lint?icon=dependabot)](https://github.com/yukihiko-shinoda/claude-skill-lint/security/dependabot)
